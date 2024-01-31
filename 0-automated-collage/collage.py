@@ -1,3 +1,8 @@
+"""
+The program will make an n x n collage of images.
+If the number of images is not a sqrt of n, it will replicate the images and fill the collage.
+"""
+
 import cv2
 import os
 import numpy as np
@@ -84,6 +89,8 @@ def collage(input_path, output_path):
     cv2.destroyAllWindows()
 
 
-
-collage("../media /collection", "../media /collage")
+if __name__ == '__main__':
+    images_path = "../media /collection" # path to images
+    output_path = "../media /collage" # path to save the output
+    collage(images_path, output_path)
 
