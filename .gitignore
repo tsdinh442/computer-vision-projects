@@ -159,5 +159,5 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-/Users/tungdinh/Documents/GitHub/computer-vison-projects/media /collection/
-/Users/tungdinh/Documents/GitHub/computer-vison-projects/1-object-tracking/models/
+media /collection/
+1-object-tracking/models/
