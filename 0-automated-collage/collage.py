@@ -88,7 +88,6 @@ def collage(input_path, output_path):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-
 if __name__ == '__main__':
     images_path = "../media /collection" # path to images
     output_path = "../media /collage" # path to save the output
