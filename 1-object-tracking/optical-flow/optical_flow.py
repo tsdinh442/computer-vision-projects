@@ -15,6 +15,7 @@ def select_points(event, x, y, flags, params):
     global masks
     global scores
     global logits
+    global color
 
     if event == cv2.EVENT_LBUTTONDOWN:
         points.append((x, y))
@@ -26,7 +27,7 @@ def select_points(event, x, y, flags, params):
         elif len(points) > 1:
             masks, scores, logits = segment(frame, np.array(points), np.array(labels), logits=logits, scores=scores)
 
-        masked_frame = masking(masks, frame, opacity=0.5)
+        masked_frame = masking(masks, frame, color, opacity=0.5)
 
         cv2.circle(masked_frame, (x, y), radius=3, color=(0, 255, 0), thickness=-1)
         cv2.imshow("frame", masked_frame)
@@ -69,15 +70,12 @@ def segment(image, input_points, input_labels, logits=None, scores=None):
 
     return masks, scores, logits
 
-def masking(masks, image, opacity=0.5):
+def masking(masks, image, color, opacity=0.5):
 
     if masks is not None:
         masked_image = np.copy(image)
         color_mask = np.zeros_like(image)
-
         for mask in masks:
-
-            color = np.random.random_integers(0, 255, 3)
             # overlay the mask over an image
             color_mask[mask] = color
             # Add the colored polygon to the original image with opacity
@@ -85,7 +83,7 @@ def masking(masks, image, opacity=0.5):
             binary_mask = mask.astype(np.uint8) * 255
             # Find contours in the binary mask
             contours, _ = cv2.findContours(binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            cv2.drawContour(masked, contours, -1, color, 2)
+            #cv2.drawContours(masked, contours, -1, color.tolist(), 2)
 
         return masked
 
@@ -94,15 +92,16 @@ def optical_flow(video_path):
     global masks
     global logits
     global scores
+    global color
 
     # Lukas Kanade params
     lk_params = dict(winSize=(10, 10),
-                     maxLevel=2,
+                     maxLevel=3,
                      criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
 
     cap = cv2.VideoCapture(video_path)
     ret, frame = cap.read()
-    frame = resize(frame, 0.5)
+    frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
     cv2.imshow("frame", frame)
     # select points on the picture frame
     cv2.setMouseCallback("frame", select_points, param=frame)
@@ -111,10 +110,19 @@ def optical_flow(video_path):
     prev_points = np.array(points).astype(np.float32) if len(points) > 0 else np.array([], dtype=float)
 
     # Define the codec and create a VideoWriter object
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
     h, w = frame.shape[:2]
-    out = cv2.VideoWriter('output.avi', fourcc, 20.0, (w, h))
+    print(h, w)
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    out = cv2.VideoWriter('../../media /out/output.mp4', fourcc, fps, (w, h), True)
 
+    # Check if the VideoWriter object is opened successfully
+    if not out.isOpened():
+        print("Error: Could not open video file for writing")
+    else:
+        print("Video file opened successfully")
+
+    n = 0
     while True:
         # allowing the user to pause the video
         key = cv2.waitKey(33)
@@ -127,7 +135,7 @@ def optical_flow(video_path):
         ret, frame = cap.read()
         if not ret:
             break
-        frame = resize(frame, 0.5)
+        frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
         cur_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
 
@@ -142,24 +150,23 @@ def optical_flow(video_path):
             elif len(cur_points) > 1:
                 masks, scores, logits = segment(frame, np.array(points), np.array(labels), logits=logits, scores=scores)
 
-            masked_frame = masking(masks, frame, opacity=0.5)
+            masked_frame = masking(masks, frame, color, opacity=0.5)
 
             for (x, y) in cur_points:
                 point = (int(x), int(y))
                 cv2.circle(masked_frame, point, radius=3, color=(0, 255, 0), thickness=-1)
 
             cv2.imshow("frame", masked_frame)
+            save_path = "../../media /out/" + str(n) + ".png"
+            cv2.imwrite(save_path, masked_frame)
+            n += 1
             out.write(masked_frame)
 
         else:
             prev_points = np.array(points).astype(np.float32)
             cv2.imshow("frame", frame)
-            out.write(frame)
 
-
-        # select points on the picture frame
-        cv2.setMouseCallback("frame", select_points, param=frame)
-
+    # Release the VideoWriter object and close the output file
     out.release()
     cap.release()
 
@@ -172,13 +179,13 @@ mask_generator, predictor = sam(check_point, model_type)
 
 # media path
 path = "../../media /videos/1.mp4"
-
 # global variables
 masks = None
 scores = None
 logits = None
 points = []
 labels = []
+color = np.random.random_integers(0, 255, 3)
 
 # run optical flow
 optical_flow(path)
