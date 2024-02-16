@@ -160,4 +160,5 @@ cython_debug/
 #.idea/
 
 media /collection/
-1-object-tracking/models/
+media /videos/
+1-object-tracking/optical-flow/models/
