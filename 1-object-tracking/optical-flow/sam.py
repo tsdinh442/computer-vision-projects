@@ -52,7 +52,7 @@ def segment_single_prompt(image, input_points, input_labels):
         multimask_output=True,
     )
 
-    return masks
+    return masks, scores, logits
 
 def segment_mult_prompts(image, input_points, input_labels):
     """
@@ -78,6 +78,41 @@ def segment_mult_prompts(image, input_points, input_labels):
                 multimask_output=False,
             )
             return masks
+
+
+def segment(image, input_points):
+    """
+
+    :param image:
+    :param input_points:
+    :param input_labels:
+    :return:
+    """
+    global scores
+    global logits
+
+    if len(input_points) == 0:
+        return
+    else:
+        input_points = np.array(input_points).astype(int)
+        input_labels = np.ones((input_points.shape[0],))
+
+        predictor.set_image(image)
+
+        if len(input_points) == 1:
+            masks, _, _ = segment_single_prompt(image, input_points, input_labels)
+
+        elif len(input_points) > 1:
+            _, scores, logits = segment_single_prompt(image, np.array([input_points[0]]), np.array([input_labels[0]]))
+            mask_input = logits[np.argmax(scores), :, :]  # Choose the model's best mask
+
+            masks, _, _ = predictor.predict(
+                point_coords=input_points,
+                point_labels=input_labels,
+                mask_input=mask_input[None, :, :],
+                multimask_output=False,
+            )
+        return masks
 
 
 scores, logits = None, None
