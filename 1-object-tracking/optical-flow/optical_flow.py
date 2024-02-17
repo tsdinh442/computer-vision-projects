@@ -1,6 +1,13 @@
 import cv2
 
 def lukas_karnade(prev_gray, cur_gray, prev_points):
+    """
+    tracking a set of points using lukas karnade method
+    :param prev_gray:
+    :param cur_gray:
+    :param prev_points:
+    :return:
+    """
 
     global masks
     global logits
