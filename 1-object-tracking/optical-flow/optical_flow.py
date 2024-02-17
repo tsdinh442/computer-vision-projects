@@ -56,7 +56,7 @@ def segment(image, input_points, input_labels, logits=None, scores=None):
         masks, scores, logits = predictor.predict(
             point_coords=input_points,
             point_labels=input_labels,
-            multimask_output=True,
+            multimask_output=False,
         )
 
     elif len(input_points) > 1:
@@ -70,22 +70,29 @@ def segment(image, input_points, input_labels, logits=None, scores=None):
 
     return masks, scores, logits
 
-def masking(masks, image, color, opacity=0.5):
+def masking(masks, image, color, opacity=0.35):
 
     if masks is not None:
-        masked_image = np.copy(image)
-        color_mask = np.zeros_like(image)
+        image_copy = np.copy(image)
+        color_mask = np.copy(image)
         for mask in masks:
-            # overlay the mask over an image
-            color_mask[mask] = color
-            # Add the colored polygon to the original image with opacity
-            masked = cv2.addWeighted(color_mask, opacity, masked_image, 1 - opacity, 0, masked_image)
+            # Convert boolean mask to binary mask
             binary_mask = mask.astype(np.uint8) * 255
+            # Convert the integer mask to a 3-channel mask
+            color_mask[mask] = color
+
+            # Blend the image and the color mask
+            masked_image = cv2.addWeighted(color_mask, opacity, image_copy, 1 - opacity, 0, image_copy)
+
+            # Create a masked image by combining the overlay and the original image
+            # masked_image = cv2.bitwise_and(image_copy, overlay)
+
             # Find contours in the binary mask
             contours, _ = cv2.findContours(binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            #cv2.drawContours(masked, contours, -1, color.tolist(), 2)
+            # Draw contours on the masked image
+            cv2.drawContours(masked_image, contours, -1, color, 2)
 
-        return masked
+        return masked_image
 
 def optical_flow(video_path):
 
@@ -109,20 +116,6 @@ def optical_flow(video_path):
     prev_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     prev_points = np.array(points).astype(np.float32) if len(points) > 0 else np.array([], dtype=float)
 
-    # Define the codec and create a VideoWriter object
-    fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
-    h, w = frame.shape[:2]
-    print(h, w)
-    fps = cap.get(cv2.CAP_PROP_FPS)
-    out = cv2.VideoWriter('../../media /out/output.mp4', fourcc, fps, (w, h), True)
-
-    # Check if the VideoWriter object is opened successfully
-    if not out.isOpened():
-        print("Error: Could not open video file for writing")
-    else:
-        print("Video file opened successfully")
-
-    n = 0
     while True:
         # allowing the user to pause the video
         key = cv2.waitKey(33)
@@ -157,17 +150,12 @@ def optical_flow(video_path):
                 cv2.circle(masked_frame, point, radius=3, color=(0, 255, 0), thickness=-1)
 
             cv2.imshow("frame", masked_frame)
-            save_path = "../../media /out/" + str(n) + ".png"
-            cv2.imwrite(save_path, masked_frame)
-            n += 1
-            out.write(masked_frame)
-
+        
         else:
             prev_points = np.array(points).astype(np.float32)
             cv2.imshow("frame", frame)
 
     # Release the VideoWriter object and close the output file
-    out.release()
     cap.release()
 
 ###### main
@@ -185,7 +173,7 @@ scores = None
 logits = None
 points = []
 labels = []
-color = np.random.random_integers(0, 255, 3)
+color =  (198, 252, 3)
 
 # run optical flow
 optical_flow(path)
