@@ -2,11 +2,11 @@ import cv2
 
 def lucas_kanade(prev_gray, cur_gray, prev_points):
     """
-    tracking a set of points using lukas karnade method
-    :param prev_gray:
-    :param cur_gray:
-    :param prev_points:
-    :return:
+    track a set of points using lukas kanade method
+    :param prev_gray: np array - gray image of previous frame
+    :param cur_gray: np array - gray image of current frame
+    :param prev_points: np array - set of tracked points in previous frame
+    :return: np array - set of estimated tracked points in current frame
     """
 
     global masks
