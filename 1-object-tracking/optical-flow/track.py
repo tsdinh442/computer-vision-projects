@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 from sam import segment
-from optical_flow import lukas_karnade
+from optical_flow import lucas_kanade
 from utils import select_points, mark_dots, draw_polygons, masking, out_of_bound, points, MASK_COLOR, POLYGONS_COLOR
 
 
@@ -47,7 +47,7 @@ def track(video_path, action=None):
             cur_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
             if len(prev_points) > 0:
-                cur_points = lukas_karnade(prev_gray, cur_gray, prev_points)
+                cur_points = lucas_kanade(prev_gray, cur_gray, prev_points)
 
                 # check if point out of bound
                 if out_of_bound(frame.shape[:2], cur_points):

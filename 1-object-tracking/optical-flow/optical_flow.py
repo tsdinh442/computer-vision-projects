@@ -1,6 +1,6 @@
 import cv2
 
-def lukas_karnade(prev_gray, cur_gray, prev_points):
+def lucas_kanade(prev_gray, cur_gray, prev_points):
     """
     tracking a set of points using lukas karnade method
     :param prev_gray:
