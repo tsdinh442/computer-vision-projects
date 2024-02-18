@@ -85,7 +85,9 @@ scores = None
 logits = None
 
 # run optical flow
-track(path, action=draw_polygons)
+track(path, action=draw_polygons)  # track a surface
+
+# track(path, action=segment)  # track and segment an object from the background.
 
 # destroy and exit
 cv2.destroyAllWindows()
