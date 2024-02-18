@@ -64,8 +64,8 @@ def track(video_path, action=None):
                     cv2.imshow("frame", masked_frame)
 
                     # save frames or write into a video
-                    cv2.imwrite("../../media /out/frames/" + str(count) + ".png", masked_frame)
-                    cv2.imwrite("../../media /out/masks/" + str(count) + ".png", binary_mask)
+                    cv2.imwrite("../../media/out/frames/" + str(count) + ".png", masked_frame)
+                    cv2.imwrite("../../media/out/masks/" + str(count) + ".png", binary_mask)
                     count += 1
                 n += 1
 
@@ -78,7 +78,7 @@ def track(video_path, action=None):
 ###### main
 
 # media path
-path = "../../media /videos/4.mp4"
+path = "../../media/videos/4.mp4"
 
 # global variables
 scores = None
