@@ -136,5 +136,5 @@ def display_number_of_cars(image, number_of_cars, font=cv2.FONT_HERSHEY_SIMPLEX)
 
     txt_position = (x_0 + X_PADDING, y_0 + Y_PADDING + txt_size_y)
 
-    cv2.rectangle(image, (x_0, y_0), ((x_0 + txt_size_x + (X_PADDING * 2)), (y_0 + txt_size_y + (Y_PADDING * 2))), color=(0, 0, 0), thickness=-1)
-    cv2.putText(image, txt, txt_position, cv2.FONT_HERSHEY_SIMPLEX, 1, color=(255, 255, 255), thickness=2)
+    cv2.rectangle(image, (x_0, y_0), ((x_0 + txt_size_x + (X_PADDING * 2)), (y_0 + txt_size_y + (Y_PADDING * 2))), color=(3, 207, 252), thickness=-1)
+    cv2.putText(image, txt, txt_position, cv2.FONT_HERSHEY_SIMPLEX, 1, color=(0, 0, 0), thickness=2)
