@@ -7,6 +7,9 @@ from segment_anything import SamAutomaticMaskGenerator, SamPredictor, sam_model_
 import torch
 import numpy as np
 
+from utils import masking, mark_dots, COLOR
+
+
 def sam(check_point, model_type):
     # for MacOS
     device = 'mps' if torch.backends.mps.is_available() else 'cpu'
@@ -33,7 +36,7 @@ def sam(check_point, model_type):
 
     return mask_generator, predictor
 
-def segment_single_prompt(image, input_points, input_labels):
+def segment_single_prompt(predictor, input_points, input_labels):
     """
 
     :param image:
@@ -43,8 +46,6 @@ def segment_single_prompt(image, input_points, input_labels):
     """
     global scores
     global logits
-
-    predictor.set_image(image)
 
     masks, scores, logits = predictor.predict(
         point_coords=input_points,
@@ -65,7 +66,6 @@ def segment_mult_prompts(image, input_points, input_labels):
     global scores
     global logits
 
-    predictor.set_image(image)
     for idx, point in enumerate(input_points):
         if idx == 0:
             _ = segment_single_prompt(image, np.array([point]), np.array([input_labels[idx]]))
@@ -90,6 +90,7 @@ def segment(image, input_points):
     """
     global scores
     global logits
+    global COLOR
 
     if len(input_points) == 0:
         return
@@ -100,10 +101,10 @@ def segment(image, input_points):
         predictor.set_image(image)
 
         if len(input_points) == 1:
-            masks, _, _ = segment_single_prompt(image, input_points, input_labels)
+            masks, _, _ = segment_single_prompt(predictor, input_points, input_labels)
 
         elif len(input_points) > 1:
-            _, scores, logits = segment_single_prompt(image, np.array([input_points[0]]), np.array([input_labels[0]]))
+            _, scores, logits = segment_single_prompt(predictor, np.array([input_points[0]]), np.array([input_labels[0]]))
             mask_input = logits[np.argmax(scores), :, :]  # Choose the model's best mask
 
             masks, _, _ = predictor.predict(
@@ -112,10 +113,14 @@ def segment(image, input_points):
                 mask_input=mask_input[None, :, :],
                 multimask_output=False,
             )
-        return masks
+
+        masked_image, binary_mask = masking(masks, image, COLOR, opacity=0.5)
+        mark_dots(masked_image, input_points.astype(int))
+
+        return masked_image, binary_mask
 
 
 scores, logits = None, None
-check_point = 'sam/sam_vit_h_4b8939.pth'
+check_point = '../../models/sam/sam_vit_h_4b8939.pth'
 model_type = 'vit_h'
 mask_generator, predictor = sam(check_point, model_type)

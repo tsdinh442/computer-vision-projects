@@ -1,8 +1,9 @@
 import numpy as np
 import cv2
-from sam import segment
+# from sam import segment
 from optical_flow import lucas_kanade
-from utils import select_points, mark_dots, draw_polygons, masking, out_of_bound, points, MASK_COLOR, POLYGONS_COLOR
+from utils import select_points, mark_dots, masking, out_of_bound, points
+from yolov8 import count_cars
 
 
 def track(video_path, action=None):
@@ -32,10 +33,10 @@ def track(video_path, action=None):
     # resume streaming if enter is pressed
     if key == 13:
         n = 0
-        count = 31
+        count = 81
         while True:
 
-            if key == ord('q'):
+            if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
             # read the next frame
@@ -53,18 +54,14 @@ def track(video_path, action=None):
                 if out_of_bound(frame.shape[:2], cur_points):
                     break
 
-                if n % 3 == 0:  # compute every 4 frames to reduce the computational cost
+                if n % 3 == 0:  # compute every number of frames to reduce the computational cost
 
                     # compute masks - either from sam or draw from points
-                    masks = action(frame, cur_points)
-                    binary_mask = masks[0].astype(np.uint8) * 255
-                    masked_frame = masking(masks, frame, MASK_COLOR, opacity=0.5)
-                    mark_dots(masked_frame, cur_points.astype(int))
-
-                    cv2.imshow("frame", masked_frame)
+                    result, binary_mask = action(frame, cur_points)
+                    cv2.imshow("output", result)
 
                     # save frames or write into a video
-                    cv2.imwrite("../../media/out/frames/" + str(count) + ".png", masked_frame)
+                    cv2.imwrite("../../media/out/frames/" + str(count) + ".png", result)
                     cv2.imwrite("../../media/out/masks/" + str(count) + ".png", binary_mask)
                     count += 1
                 n += 1
@@ -78,16 +75,19 @@ def track(video_path, action=None):
 ###### main
 
 # media path
-path = "../../media/videos/4.mp4"
+path = "../../media/videos/5.mp4"
 
 # global variables
 scores = None
 logits = None
+surface_lot = []
+
+MASK_COLOR = (3, 207, 252)
 
 # run optical flow
-track(path, action=draw_polygons)  # track a surface
+# track(path, action=count_cars)  # track a surface
 
-# track(path, action=segment)  # track and segment an object from the background.
+track(path, action=count_cars)  # track and segment an object from the background.
 
 # destroy and exit
 cv2.destroyAllWindows()

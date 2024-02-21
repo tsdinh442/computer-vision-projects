@@ -1,8 +1,8 @@
 # OPTICAL FLOW
 
-- Surface Lot Tracking
+- Parking Lot Tracking
 
-![Surface Lot Tracking](../../media/gif/1_OF_surfacelot_tracking.gif)
+![Surface Lot Tracking](../../media/gif/1_OF_parkinglot_tracking.gif)
 
 - Vehicle Tracking
 

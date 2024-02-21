@@ -4,12 +4,13 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 
 ### 1. Optical Flow
     
-- Surface Lot Tracking
+- Parking Lot Tracking
 
-![Surface Lot Tracking](media/gif/1_OF_surfacelot_tracking.gif)
+![Surface Lot Tracking](media/gif/1_OF_parkinglot_tracking.gif)
 
 - Vehicle Tracking
 
 ![Vehicle Tracking](media/gif/1_OF_vehicle_tracking.gif)
+
 
 [**Repo**](1-object-tracking/optical-flow) | [**README**](1-object-tracking/optical-flow/README.md) | [**Demo**](https://www.youtube.com/watch?v=uecvioD0xVw)
