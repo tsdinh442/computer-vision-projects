@@ -20,3 +20,6 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 - Feature matching
 
 ![Feature Matching](media/out/2-feature-detection/temple.jpg)
+
+
+[**Repo**](2-feature-detection) | [**README**](2-feature-detection/README.md) 
