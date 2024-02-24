@@ -8,7 +8,8 @@
 
 ![Vehicle Tracking](../../media/gif/1_OF_vehicle_tracking.gif)
 
-### Acknowledgement 
+
+#### Acknowledgement 
 
     The car detection model was trained on the pretrained YOLOv8 model developed by Ultralytics.
     https://github.com/ultralytics/ultralytics
