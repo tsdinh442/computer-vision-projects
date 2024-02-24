@@ -15,6 +15,14 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 
 [**Repo**](1-object-tracking/optical-flow) | [**README**](1-object-tracking/optical-flow/README.md) | [**Demo**](https://www.youtube.com/watch?v=uecvioD0xVw)
 
+#### Acknowledgement 
+
+    The car detection model was trained on the pretrained YOLOv8 model developed by Ultralytics.
+    https://github.com/ultralytics/ultralytics 
+
+    The segementation model, Segment-Anything, was developed by Meta AI.
+    https://github.com/facebookresearch/segment-anything 
+
 ### 2. Feature Detection
 
 - Feature matching
@@ -26,10 +34,4 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 
 
 
-#### Acknowledgement 
 
-    The car detection model was trained on the pretrained YOLOv8 model developed by Ultralytics.
-    https://github.com/ultralytics/ultralytics 
-
-    The segementation model, Segment-Anything, was developed by Meta AI.
-    https://github.com/facebookresearch/segment-anything 
