@@ -49,19 +49,22 @@ def detect(model, targeted_regions, image, conf, iou):
 
     for detection in detections.boxes.data.tolist():
         x1, y1, x2, y2, score, class_id = detection
-        bboxes.append([x1, y1, x2, y2])
-        scores.append(score)
+
         if score > conf:
             centroid = (int((x1 + x2) / 2), int((y1 + y2) / 2))
 
             # test if car inside the marked parking lot region
-            if targeted_regions is not None and len(targeted_regions) > 0:
+            if len(targeted_regions) > 0: # if there are regions to test
                 check = cv2.pointPolygonTest(targeted_regions, centroid, measureDist=False)
-            elif not targeted_regions:
-                check = True
+
+            else:
+                check = 1  # consider all detected cars
+
             if check > 0:
                 num_of_cars += 1
                 centroids.append(centroid)
+                bboxes.append([x1, y1, x2, y2])
+                scores.append(score)
 
     return num_of_cars, centroids, bboxes, scores
 
@@ -90,12 +93,12 @@ def count_cars(image, points):
     bool_mask = mask != 0
 
     masked_image, binary_mask, _ = masking([bool_mask], image, COLOR, opacity=0.25)
-    mark_dots(masked_image, int_points)
+    masked_image, _ = mark_dots(masked_image, int_points)
 
     # perform car detection to retrieve number of cars and the centroid of each bbox
     if len(points) > 2 and closing_polygon(points[0], points[-1]):
         number_of_cars, centroids, _, _ = detect(car_detector, int_points, image, conf=0.7, iou=0.7)
-        mark_dots(masked_image, np.array(centroids).astype(int), color=(0, 0, 255))
+        masked_image, _ = mark_dots(masked_image, np.array(centroids).astype(int), color=(0, 0, 255))
         display_number_of_cars(masked_image, number_of_cars)
 
     return masked_image, binary_mask
