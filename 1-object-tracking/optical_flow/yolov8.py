@@ -22,7 +22,7 @@ def yolo(model):
     return car_detector
 
 
-def detect(model, targeted_regions, image, conf, iou):
+def detect(targeted_regions, image, conf, iou):
 
     """
 
@@ -43,6 +43,8 @@ def detect(model, targeted_regions, image, conf, iou):
     centroids = []
     bboxes = []
     scores = []
+
+    model = car_detector
 
     # perform the detection task
     detections = model(image, iou=iou)[0]
@@ -97,7 +99,7 @@ def count_cars(image, points):
 
     # perform car detection to retrieve number of cars and the centroid of each bbox
     if len(points) > 2 and closing_polygon(points[0], points[-1]):
-        number_of_cars, centroids, _, _ = detect(car_detector, int_points, image, conf=0.7, iou=0.7)
+        number_of_cars, centroids, _, _ = detect(int_points, image, conf=0.7, iou=0.7)
         masked_image, _ = mark_dots(masked_image, np.array(centroids).astype(int), color=(0, 0, 255))
         display_number_of_cars(masked_image, number_of_cars)
 
