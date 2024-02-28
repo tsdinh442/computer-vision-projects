@@ -6,11 +6,11 @@ Learning by doing. This repo represents my journey of learning CV and will conta
     
 - Optical flow - Parking lot tracking
 
-![Surface Lot Tracking](media/gif/1_OF_parkinglot_tracking.gif)
+![Surface Lot Tracking](media/demo/1_OF_parkinglot_tracking.gif)
 
 - Optical flow - Vehicle tracking
 
-![Vehicle Tracking](media/gif/1_OF_vehicle_tracking.gif)
+![Vehicle Tracking](media/demo/1_OF_vehicle_tracking.gif)
 
 
 [**Repo**](1-object-tracking/optical-flow) | [**README**](1-object-tracking/optical-flow/README.md) | [**Demo**](https://www.youtube.com/watch?v=uecvioD0xVw)
@@ -27,7 +27,9 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 
 - Feature matching
 
-![Feature Matching](media/out/2-feature-detection/temple.jpg)
+![Feature Matching](media/demo/2-FT-temple.jpg)
+
+
 
 
 [**Repo**](2-feature-detection) | [**README**](2-feature-detection/README.md) 
