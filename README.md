@@ -29,7 +29,7 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 
 ![Feature Matching](media/demo/2-FT-temple.jpg)
 
-- Stitch and map images onto satellite imagery
+- Stitch and map drone images onto satellite imagery
 
 <img src="media/out/feature_matching/satellite.jpg" alt="satellite" style="width: 32%;"> <img src="media/out/feature_matching/transparent.jpg" alt="stitched" style="width: 32%;"> <img src="media/out/feature_matching/filled.jpg" alt="overlaid" style="width: 32%;">
 
