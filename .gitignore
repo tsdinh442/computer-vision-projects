@@ -161,9 +161,7 @@ cython_debug/
 
 media/collection/
 media/videos/
-media/out/feature_matching
-media/out/
-
-
+media/out/feature_matching/frames
+media/out/feature_matching/out
 
 models/
