@@ -32,16 +32,16 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 - Stitch and map drone images onto satellite imagery
 
 <div style="display: flex; justify-content: space-around;">
-    <div style="text-align: left; margin-right: 3px;">
-        <img src="media/out/feature_matching/satellite.jpg" alt="Satellite" style="width: 32%; margin-bottom: -8px;" ><br>
+    <div style="width: 30%; text-align: left; margin-right: 3px;">
+        <img src="media/out/feature_matching/satellite.jpg" alt="Satellite" style="width: 100%; margin-bottom: -8px;" ><br>
         <span style="font-size: 12px;">Satellite</span>
     </div>
-    <div style="text-align: left; margin-right: 3px;">
-        <img src="media/out/feature_matching/transparent.jpg" alt="Stitched" style="width: 32%; margin-bottom: -8px;"><br>
+    <div style="width: 30%, text-align: left; margin-right: 3px;">
+        <img src="media/out/feature_matching/transparent.jpg" alt="Stitched" style="width: 100%; margin-bottom: -8px;"><br>
         <span style="font-size: 12px;">Stitched</span>
     </div>
-    <div style="text-align: left; ">
-        <img src="media/out/feature_matching/filled.jpg" alt="Overlay" style="width: 32%; margin-bottom: -8px;"><br>
+    <div style="width: 30%, text-align: left; ">
+        <img src="media/out/feature_matching/filled.jpg" alt="Overlay" style="width: 100%; margin-bottom: -8px;"><br>
         <span style="font-size: 12px;">Overlay</span>
     </div>
 </div>
