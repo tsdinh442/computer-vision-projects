@@ -31,7 +31,9 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 
 - Match drone images onto satellite imagery
 
-![Satellite](media/out/feature_matching/satellite.jpg)  ![Stictched](media/out/feature_matching/transparent.jpg)        ![Stictched](media/out/feature_matching/filled.jpg)
+<img src="media/out/feature_matching/satellite.jpg" alt="satellite" style="width: 33%;">
+<img src="media/out/feature_matching/transparent.jpg" alt="stitched" style="width: 33%;">
+<img src="media/out/feature_matching/filled.jpg" alt="overlaid" style="width: 33%;">
 
 
 [**Repo**](2-feature-detection) | [**README**](2-feature-detection/README.md) 
