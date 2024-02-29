@@ -29,7 +29,9 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 
 ![Feature Matching](media/demo/2-FT-temple.jpg)
 
+- Match drone images onto satellite imagery
 
+![Satellite](media/out/feature_matching/satellite.jpg)  ![Stictched](media/out/feature_matching/transparent.jpg)        ![Stictched](media/out/feature_matching/filled.jpg)
 
 
 [**Repo**](2-feature-detection) | [**README**](2-feature-detection/README.md) 
