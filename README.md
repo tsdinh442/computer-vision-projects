@@ -3,7 +3,13 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 
 
 ### 1. Object Tracking
-    
+
+- Kalman Filter - Car tracking and tag them with an ID
+
+<a href="https://www.youtube.com/watch?v=lNpc3wB2L2E">
+  <img src="https://img.youtube.com/vi/lNpc3wB2L2E/0.jpg" width="100%" alt="YOUTUBE">
+</a>
+
 - Optical flow - Parking lot tracking
 
 ![Surface Lot Tracking](media/demo/1_OF_parkinglot_tracking.gif)
