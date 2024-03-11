@@ -2,11 +2,11 @@
 
 - Parking Lot Tracking
 
-![Surface Lot Tracking](../../media/demo/1_OF_parkinglot_tracking.gif)
+![Surface Lot Tracking](../media/demo/1_OF_parkinglot_tracking.gif)
 
 - Vehicle Tracking
 
-![Vehicle Tracking](../../media/demo/1_OF_vehicle_tracking.gif)
+![Vehicle Tracking](../media/demo/1_OF_vehicle_tracking.gif)
 
 
 #### Acknowledgement 
