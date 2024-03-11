@@ -11,7 +11,7 @@ Monitor and analyze parking occupancy at scale using drones and AI
 ![Satellite](../../media/demo/0_satellite.png)
 
 
-#### 3. Feature detecting and descriptor matching
+#### 3. Feature detection and descriptor matching
 ![Feature Matching](../../media/demo/0_feature_matching.jpg)
 
 
@@ -32,7 +32,7 @@ Monitor and analyze parking occupancy at scale using drones and AI
 ![Detect](../../media/demo/0_detect.JPG)
 
 
-#### 8. Labeling occupancy status for each parking stall 
+#### 8. Label occupancy status for each parking stall 
 
 <img src="../../media/demo/0_8AM.jpg" alt="satellite" style="width: 32%;"> <img src="../../media/demo/0_10AM.jpg" alt="stitched" style="width: 32%;"> <img src="../../media/demo/0_12PM.jpg" alt="overlaid" style="width: 32%;">
 <img src="../../media/demo/0_2PM.jpg" alt="satellite" style="width: 32%;"> <img src="../../media/demo/0_4PM.jpg" alt="stitched" style="width: 32%;"> 
