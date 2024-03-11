@@ -29,7 +29,7 @@ Monitor and analyze parking occupancy at scale using drones and AI
 
 
 #### 7. Perform car detection
-![Detect](../../media/demo/0_detect.jpg)
+![Detect](../../media/demo/0_detect.JPG)
 
 
 #### 8. Labeling occupancy status for each parking stall 
