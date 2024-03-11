@@ -15,7 +15,7 @@ Monitor and analyze parking occupancy at scale using drones and AI
 ![Feature Matching](../../media/demo/0_feature_matching.jpg)
 
 
-#### 4. Applying RANSAC to filter outliers and computer homography matrix
+#### 4. Apply RANSAC to filter outliers and computer homography matrix
 ![Feature Matching](../../media/demo/0_ransac.jpg)
 
 
@@ -27,7 +27,8 @@ Monitor and analyze parking occupancy at scale using drones and AI
 #### 6. Overlay drone images onto satellite imagery 
 <img src="../../media/demo/0_trans_.jpg" alt="satellite" style="width: 48%;"> <img src="../../media/demo/0_filled_.jpg" alt="stitched" style="width: 48%;"> 
 
-#### 7. Performing car detections
+
+#### 7. Perform car detection
 ![Detect](../../media/demo/0_detect.jpg)
 
 
