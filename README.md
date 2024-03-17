@@ -1,6 +1,21 @@
 # Computer Vision Projects
 Learning by doing. This repo represents my journey of learning CV and will contain a variety of small-scale projects, from classic to CNN.  
 
+### 0. Capstone project
+
+- Monitor and analyze parking occupancy at scale using drones and AI
+
+![gif](media/demo/0_parking.gif)
+
+Techniques: 
+
+    - Feature detections and descriptor matching
+    - RANSAC
+    - Homography matrix 
+    - GIS
+    - Object detection
+    - Perspective transform
+    
 
 ### 1. Object Tracking
 
