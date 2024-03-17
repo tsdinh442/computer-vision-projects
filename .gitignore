@@ -159,9 +159,9 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+.gitignore
 media/collection/
 media/videos/
-media/out/feature_matching/frames
-media/out/feature_matching/out
+media/out
+0_capstone/parking_occupancy_monitoring/
 
-models/
