@@ -32,7 +32,7 @@ def is_image_file(file_path):
     _, file_extension = os.path.splitext(file_path)
 
     # List of common image file extensions
-    image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp']
+    image_extensions = ['.jpg', '.jpeg', '.png', '.demo', '.bmp', '.tiff', '.webp']
 
     # Check if the file extension is in the list of image extensions
     return file_extension.lower() in image_extensions
