@@ -9,7 +9,7 @@ Learning by doing. This repo represents my journey of learning CV and will conta
 
 Techniques: 
 
-    - Feature detections and descriptor matching
+    - Feature detection and descriptor matching
     - RANSAC
     - Homography matrix 
     - GIS
