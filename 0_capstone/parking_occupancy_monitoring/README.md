@@ -5,10 +5,11 @@ Monitor and analyze parking occupancy at scale using drones and AI
 ![gif](../../media/demo/0_parking.gif)
 
 #### 1. Collect drone images
+![Drones](../../media/demo/collage.png)
 
 
 #### 2. Collect high-resolution satellite imagery
-![Satellite](../../media/demo/0_satellite.png)
+![Satellite](../../media/demo/satellite.png)
 
 
 #### 3. Feature detection and descriptor matching
@@ -30,6 +31,10 @@ Monitor and analyze parking occupancy at scale using drones and AI
 
 #### 7. Perform car detection
 ![Detect](../../media/demo/0_detect.JPG)
+
+
+#### 7. Apply binary mask image
+![Mask](../../media/demo/stall_mask_2.png)
 
 
 #### 8. Label occupancy status for each parking stall 
