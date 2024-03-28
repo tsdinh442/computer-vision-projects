@@ -35,7 +35,7 @@ Techniques:
 ![Vehicle Tracking](media/demo/1_OF_vehicle_tracking.gif)
 
 
-[**Repo**](1-object-tracking/optical-flow) | [**README**](1-object-tracking/optical-flow/README.md) | [**Demo**](https://www.youtube.com/watch?v=uecvioD0xVw)
+[**Repo**](1_object_tracking/optical_flow) | [**README**](1_object_tracking/optical_flow/README.md) | [**Demo**](https://www.youtube.com/watch?v=uecvioD0xVw)
 
 #### Acknowledgement 
 
@@ -55,7 +55,19 @@ Techniques:
 
 <img src="media/demo/2-FT-satellite.jpg" alt="satellite" style="width: 32%;"> <img src="media/demo/2-FT-stitched.jpg" alt="stitched" style="width: 32%;"> <img src="media/demo/2-FT-overlay.jpg" alt="overlaid" style="width: 32%;">
 
-[**Repo**](2-feature-detection) | [**README**](2-feature-detection/README.md) 
+[**Repo**](2_feature_detection) | [**README**](2_feature_detection/README.md) 
+
+
+### 3. Stereo Vision
+
+- Epipolar lines
+
+![Feature Matching](media/demo/3_ST_epilines.png)
+
+[**Repo**](3_stereo_vision) | 
+
+
+
 
 
 
