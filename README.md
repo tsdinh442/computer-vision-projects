@@ -65,6 +65,7 @@ Techniques:
 ![epipolar](media/demo/3_ST_epilines.png)
 
 - Depth map
+
 ![depth_map](media/demo/3_ST_depth_map.png)
 
 [**Repo**](3_stereo_vision) | 
